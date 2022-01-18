@@ -26,10 +26,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.3
   path_provider: any
-  camera: any
+  camera: ^0.9.4+5
   path: any
-  database: any
-  geolocator: any
+  geolocator: ^8.0.3
   web_socket_channel: ^2.1.0
   image_picker: ^0.8.4+2
   xml: ^5.3.0
