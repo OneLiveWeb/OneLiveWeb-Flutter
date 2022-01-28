@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class SignalKManager {
-  void sendLocationInformation(double? lat, double? long) async {
+  void sendLocationInformation(double lat, double long) async {
     final channel = WebSocketChannel.connect(
         Uri.parse('ws://192.168.8.142:3000/signalk/v1/stream'));
 

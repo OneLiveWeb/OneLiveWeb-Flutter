@@ -1,17 +1,16 @@
 import 'dart:convert';
 
+import 'package:em_core/Data/DataManager.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:oneliveweb/Data/DataManager.dart';
 import 'package:oneliveweb/GeoLocation.dart';
 import 'package:oneliveweb/SignalK/SignalKManager.dart';
+import 'package:oneliveweb/main.dart';
 
 class OneLiveWeb {
   String _bob = "This is my pretty variable";
   String _tom = "";
-  SignalKManager signalKManager = SignalKManager();
-  GeoLocationManager location = GeoLocationManager();
-  DataManager dataManager = DataManager();
+
 
   String get bob {
     return "Ian was here ${_bob}";
@@ -32,11 +31,14 @@ class OneLiveWeb {
   }
 
   void printSomething(String s) async {
+    var location = getIt<GeoLocationManager>();
+    var signalk = getIt<SignalKManager>();
+    var dataManager = getIt<DataManager>();
     Map map = await getJsonFromServer(s);
     print(map);
      Position position = await location.determinePosition();
      print("Lat and long was ${position}");
-     signalKManager.sendLocationInformation(position.latitude, position.longitude);
+    signalk.sendLocationInformation(position.latitude, position.longitude);
      await dataManager.archive.loadPropertyDetails("asset");
 print("All done");
   }
