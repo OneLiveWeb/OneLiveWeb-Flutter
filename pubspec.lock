@@ -164,19 +164,12 @@ packages:
     source: hosted
     version: "2.1.4"
   get:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.1"
-  get_it:
-    dependency: "direct main"
-    description:
-      name: get_it
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "7.2.0"
   http:
     dependency: "direct main"
     description:
@@ -236,11 +229,9 @@ packages:
   olw_mobile_core:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "9818c287d39bb8f214558af5a180c83bddaacd13"
-      url: "git://github.com/OneLiveWeb/olw_mobile_core"
-    source: git
+      path: "../olw_mobile_core"
+      relative: true
+    source: path
     version: "0.0.1"
   path:
     dependency: "direct main"

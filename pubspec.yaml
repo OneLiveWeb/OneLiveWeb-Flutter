@@ -32,10 +32,9 @@ dependencies:
   web_socket_channel: ^2.1.0
   image_picker: ^0.8.4+2
   xml: ^5.3.0
-  get_it: ^7.2.0
+  get: ^4.6.1
   olw_mobile_core:
-    git:
-      url: git://github.com/OneLiveWeb/olw_mobile_core
+    path: ../olw_mobile_core
 
 
 

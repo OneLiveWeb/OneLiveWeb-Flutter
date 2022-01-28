@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:em_core/Data/DataManager.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:olw_mobile_core/Data/DataManager.dart';
 import 'package:oneliveweb/GeoLocation.dart';
 import 'package:oneliveweb/SignalK/SignalKManager.dart';
 import 'package:oneliveweb/main.dart';
@@ -31,9 +32,9 @@ class OneLiveWeb {
   }
 
   void printSomething(String s) async {
-    var location = getIt<GeoLocationManager>();
-    var signalk = getIt<SignalKManager>();
-    var dataManager = getIt<DataManager>();
+    var location = Get.find<GeoLocationManager>();
+    var signalk = Get.find<SignalKManager>();
+    var dataManager = Get.find<DataManager>();
     Map map = await getJsonFromServer(s);
     print(map);
      Position position = await location.determinePosition();

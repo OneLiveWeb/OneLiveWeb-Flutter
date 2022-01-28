@@ -1,14 +1,13 @@
-import 'package:em_core/Data/DataManager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:get_it/get_it.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:oneliveweb/GeoLocation.dart';
 import 'package:oneliveweb/OneLiveWeb.dart';
 import 'package:oneliveweb/SignalK/SignalKManager.dart';
 
-GetIt getIt = GetIt.instance;
+
 
 
 
@@ -20,10 +19,9 @@ void main() {
 }
 
 void setupBeans() {
-  getIt.registerSingleton<OneLiveWeb>(OneLiveWeb());
-  getIt.registerSingleton<GeoLocationManager>(GeoLocationManager());
-  getIt.registerSingleton<SignalKManager>(SignalKManager());
-
+  Get.put<OneLiveWeb>(OneLiveWeb());
+  Get.put<GeoLocationManager>(GeoLocationManager());
+  Get.put<SignalKManager>(SignalKManager());
 }
 
 class OneLiveWidget extends StatelessWidget {
@@ -139,9 +137,9 @@ class GPSWidgetState extends State<GPSWidget> {
   }
 
   void updateLocation() async {
-    var location = getIt<GeoLocationManager>();
+    var location = Get.find<GeoLocationManager>();
     p = await location.determinePosition();
-    var signalk = getIt<SignalKManager>();
+    var signalk = Get.find<SignalKManager>();
     if(p!.latitude != null && p!.longitude != null) {
       signalk.sendLocationInformation(p!.latitude, p!.longitude);
     }
