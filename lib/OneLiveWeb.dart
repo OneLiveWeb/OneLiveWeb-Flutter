@@ -8,10 +8,9 @@ import 'package:oneliveweb/GeoLocation.dart';
 import 'package:oneliveweb/SignalK/SignalKManager.dart';
 import 'package:oneliveweb/main.dart';
 
-class OneLiveWeb {
+class OneLiveWebOld {
   String _bob = "This is my pretty variable";
   String _tom = "";
-
 
   String get bob {
     return "Ian was here ${_bob}";
@@ -37,11 +36,11 @@ class OneLiveWeb {
     var dataManager = Get.find<DataManager>();
     Map map = await getJsonFromServer(s);
     print(map);
-     Position position = await location.determinePosition();
-     print("Lat and long was ${position}");
+    Position position = await location.determinePosition();
+    print("Lat and long was ${position}");
     signalk.sendLocationInformation(position.latitude, position.longitude);
-     await dataManager.archive.loadPropertyDetails("asset");
-print("All done");
+    await dataManager.archive.loadPropertyDetails("asset");
+    print("All done");
   }
 
   @override
@@ -50,9 +49,5 @@ print("All done");
     return "Yep this works ";
   }
 
-  saveSomething() {
-    
-
-
-  }
+  saveSomething() {}
 }

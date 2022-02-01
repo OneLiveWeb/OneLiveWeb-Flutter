@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:olw_mobile_core/olw_mobile_core.dart';
 import 'package:oneliveweb/GeoLocation.dart';
-import 'package:oneliveweb/OneLiveWeb.dart';
 import 'package:oneliveweb/SignalK/SignalKManager.dart';
 
 
@@ -14,22 +14,28 @@ import 'package:oneliveweb/SignalK/SignalKManager.dart';
 
 void main() {
   setupBeans();
-
   runApp(OneLiveWidget());
+  var olw = Get.find<OneLiveWeb>();
+  olw.initialize();
+
+
+
+
 }
 
 void setupBeans() {
   Get.put<OneLiveWeb>(OneLiveWeb());
   Get.put<GeoLocationManager>(GeoLocationManager());
   Get.put<SignalKManager>(SignalKManager());
+
 }
 
 class OneLiveWidget extends StatelessWidget {
   // This widget is the root of your application.
-  @override
+  var olw = Get.find<OneLiveWeb>();
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'One Live Web - Share your Event Experience',
+      title: '${olw.settings?["appname"]}',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
@@ -58,6 +64,7 @@ class OneLiveWebHome extends StatefulWidget {
 
 class _OneLiveWebHomeState extends State<OneLiveWebHome> {
   int _counter = 0;
+  var olw = Get.find<OneLiveWeb>();
 
   void _incrementCounter() {
     setState(() {
@@ -82,7 +89,7 @@ class _OneLiveWebHomeState extends State<OneLiveWebHome> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('${olw.settings?["appname"]}'),
       ),
       body: Container(
         child: GPSWidget(),
